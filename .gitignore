@@ -1,6 +1,8 @@
 # Python Virtual Environment
 venv/
 .venv/
+image/
+
 
 # Python Bytecode and Caches
 *.py[cod]
