@@ -1,4 +1,3 @@
-# Untitled
 
 **Project Goal:** To build and run a distributed PySpark data processing job on a local Kubernetes cluster (Docker Desktop) using the Spark on Kubernetes Operator.
 
