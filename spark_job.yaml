@@ -1,0 +1,31 @@
+apiVersion: "sparkoperator.k8s.io/v1beta2"
+kind: SparkApplication
+metadata:
+  name: spark-titanic-job # Name of your Spark job in K8s
+  namespace: default # Namespace where the job will run
+spec:
+  type: Python
+  pythonVersion: "3"
+  mode: cluster
+  image: "spark-titanic-app:latest"
+  imagePullPolicy: IfNotPresent
+  mainApplicationFile: "local:///app/process_data.py"
+  sparkVersion: "3.4.1" # Ensure this matches your image/pyspark
+  restartPolicy:
+    type: Never
+  driver:
+    cores: 1
+    coreLimit: "1200m"
+    memory: "512m"
+    labels:
+      version: 3.4.1 # Use a compatible Spark version
+    # *** ADD THIS LINE ***
+    serviceAccount: spark
+  executor:
+    cores: 1
+    instances: 1
+    memory: "512m"
+    labels:
+      version: 3.4.1 # Use a compatible Spark version
+    # *** ADD THIS LINE ***
+    serviceAccount: spark
